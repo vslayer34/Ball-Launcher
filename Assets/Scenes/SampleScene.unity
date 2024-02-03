@@ -266,7 +266,7 @@ Transform:
   m_GameObject: {fileID: 223452891}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.15, y: 2.69, z: 0}
+  m_LocalPosition: {x: -2.19, y: -0.94, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -290,7 +290,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 4.8991942
+  m_Distance: 0.4501111
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!1 &224455389
@@ -399,7 +399,7 @@ Transform:
   m_GameObject: {fileID: 224455389}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.74, y: 2.99, z: 0}
+  m_LocalPosition: {x: -2.18, y: -0.49, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1484,6 +1484,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baulderRb: {fileID: 223452892}
+  _baulderJoint: {fileID: 223452896}
+  _releaseBaulderAfter: 0.3
 --- !u!4 &1542748014
 Transform:
   m_ObjectHideFlags: 0
