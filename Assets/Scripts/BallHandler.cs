@@ -6,18 +6,30 @@ using UnityEngine.InputSystem;
 
 public class BallHandler : MonoBehaviour
 {
+    // reference for the baulder prefab and pivot point
+    [SerializeField, Tooltip("Reference to the bauder prefab")]
+    private GameObject _baulderPrefab;
+
+    [SerializeField, Tooltip("Reference to the pivot point")]
+    private Rigidbody2D _jointPivot;
+
+
+
+
+    [SerializeField, Tooltip("Spawn delay for a new baulder")]
+    private float _spawnDelay;
+
+
     // camera and touch screen & world positions
     private Camera _mainCamera;
     private Vector2 _touchPosition;
     private Vector3 _worldTouchPosition;
 
 
-    // references to the baulder and joint
-    [SerializeField, Tooltip("Reference to the bauder rigid body")]
+    // references to the baulder rigidbody
     private Rigidbody2D _baulderRb;
-
-    [SerializeField, Tooltip("Reference to the joint to disable it after throwing the baulder")]
     private Joint2D _baulderJoint;
+
 
     [SerializeField, Tooltip("When to release the bauder from the joint after launching")]
     private float _releaseBaulderAfter;
@@ -27,6 +39,8 @@ public class BallHandler : MonoBehaviour
     private void Start()
     {
         _mainCamera = Camera.main;
+
+        SpawnNewBaulder();
     }
 
     private void Update()
@@ -83,5 +97,18 @@ public class BallHandler : MonoBehaviour
     {
         _baulderJoint.enabled = false;
         _baulderJoint = null;
+
+        Invoke(nameof(SpawnNewBaulder), _spawnDelay);
+    }
+
+
+    private void SpawnNewBaulder()
+    {
+        GameObject newBaulder = Instantiate(_baulderPrefab, _jointPivot.transform.position, Quaternion.identity);
+
+        _baulderRb = newBaulder.GetComponent<Rigidbody2D>();
+        _baulderJoint = newBaulder.GetComponent<Joint2D>();
+
+        _baulderJoint.connectedBody = _jointPivot;
     }
 }
